@@ -522,17 +522,29 @@
         }
         .site-footer a { color: var(--accent); font-weight: 500; }
 
+        /* ── Mobile back bar ── */
+        .mobile-back {
+            display: none; position: sticky; top: 0; z-index: 90;
+            background: var(--bg-card); border-bottom: 1px solid var(--border);
+            padding: 14px 16px;
+        }
+        .mobile-back button {
+            background: none; border: none; cursor: pointer;
+            font-family: inherit; font-size: 0.85rem; font-weight: 600;
+            color: var(--accent); padding: 0;
+        }
+
         /* ── Responsive ── */
         @media (max-width: 900px) {
             .container { flex-direction: column; }
             .sidebar {
                 width: 100%; position: relative; top: auto; left: auto;
-                height: auto; border-right: none;
-                border-bottom: 1px solid var(--border);
-                animation: none;
-                overflow-y: visible;
+                height: auto; min-height: 100vh; border-right: none;
+                animation: none; overflow-y: visible;
             }
-            .main { padding: 24px 16px; }
+            .sidebar.mobile-hidden { display: none; }
+            .main { padding: 24px 16px; display: none; }
+            .main.mobile-visible { display: block; }
             .blog-grid { grid-template-columns: 1fr; }
             .metrics-bar { flex-wrap: wrap; padding: 18px 16px; gap: 8px; }
             .metric-arrow { display: none; }
@@ -658,6 +670,11 @@
             </div>
 
         </aside>
+
+        <!-- ── Mobile Back Button ── -->
+        <div class="mobile-back" id="mobileBack">
+            <button onclick="backToProfile()">&larr; Back to Profile</button>
+        </div>
 
         <!-- ── Main Content ── -->
         <main class="main">
@@ -936,6 +953,41 @@
     </div>
 
     <script>
+        function isMobile() { return window.innerWidth <= 900; }
+
+        // ── Mobile: nav links show main content, hide sidebar ──
+        document.querySelectorAll('.sidebar-nav a').forEach(function(link) {
+            link.addEventListener('click', function(e) {
+                if (!isMobile()) return;
+                e.preventDefault();
+                var target = this.getAttribute('href');
+                document.getElementById('sidebar').classList.add('mobile-hidden');
+                document.querySelector('.main').classList.add('mobile-visible');
+                document.getElementById('mobileBack').style.display = 'block';
+                setTimeout(function() {
+                    var el = document.querySelector(target);
+                    if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 50);
+            });
+        });
+
+        // ── Mobile: back to profile ──
+        function backToProfile() {
+            document.getElementById('sidebar').classList.remove('mobile-hidden');
+            document.querySelector('.main').classList.remove('mobile-visible');
+            document.getElementById('mobileBack').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        // ── Reset on resize to desktop ──
+        window.addEventListener('resize', function() {
+            if (!isMobile()) {
+                document.getElementById('sidebar').classList.remove('mobile-hidden');
+                document.querySelector('.main').classList.remove('mobile-visible');
+                document.getElementById('mobileBack').style.display = 'none';
+            }
+        });
+
         // ── Scroll Reveal ──
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
