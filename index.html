@@ -522,40 +522,16 @@
         }
         .site-footer a { color: var(--accent); font-weight: 500; }
 
-        /* ── Mobile Nav ── */
-        .mobile-nav {
-            display: none; position: fixed;
-            top: 0; left: 0; right: 0; height: 56px;
-            background: var(--bg-card); border-bottom: 1px solid var(--border);
-            z-index: 90; align-items: center;
-            justify-content: space-between; padding: 0 16px;
-        }
-        .mobile-nav .nav-name { font-weight: 700; font-size: 1rem; color: var(--text-primary); }
-        .hamburger {
-            background: none; border: none; cursor: pointer;
-            display: flex; flex-direction: column; gap: 5px; padding: 8px;
-        }
-        .hamburger span {
-            display: block; width: 22px; height: 2px;
-            background: var(--text-primary); border-radius: 2px;
-            transition: transform 0.3s, opacity 0.3s;
-        }
-        .hamburger.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
-        .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
-
         /* ── Responsive ── */
         @media (max-width: 900px) {
-            .mobile-nav { display: flex; }
-            .container { flex-direction: column; padding-top: 56px; }
+            .container { flex-direction: column; }
             .sidebar {
-                width: 100%; position: fixed; top: 56px; left: 0;
-                height: calc(100vh - 56px); border-right: none;
-                z-index: 80; transform: translateX(-100%);
-                transition: transform 0.3s ease;
+                width: 100%; position: relative; top: auto; left: auto;
+                height: auto; border-right: none;
+                border-bottom: 1px solid var(--border);
                 animation: none;
+                overflow-y: visible;
             }
-            .sidebar.open { transform: translateX(0); }
             .main { padding: 24px 16px; }
             .blog-grid { grid-template-columns: 1fr; }
             .metrics-bar { flex-wrap: wrap; padding: 18px 16px; gap: 8px; }
@@ -567,14 +543,6 @@
     </style>
 </head>
 <body>
-
-    <!-- ── Mobile Nav ── -->
-    <nav class="mobile-nav">
-        <span class="nav-name">Ogaga Okedi</span>
-        <button class="hamburger" onclick="toggleSidebar()" aria-label="Toggle menu">
-            <span></span><span></span><span></span>
-        </button>
-    </nav>
 
     <div class="container">
 
@@ -688,6 +656,7 @@
                     Google Scholar &rarr;
                 </a>
             </div>
+
         </aside>
 
         <!-- ── Main Content ── -->
@@ -967,31 +936,6 @@
     </div>
 
     <script>
-        // ── Mobile Sidebar Toggle ──
-        function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('open');
-            document.querySelector('.hamburger').classList.toggle('open');
-        }
-        document.addEventListener('click', function(e) {
-            var sidebar = document.getElementById('sidebar');
-            var hamburger = document.querySelector('.hamburger');
-            if (sidebar.classList.contains('open') &&
-                !sidebar.contains(e.target) && !hamburger.contains(e.target)) {
-                sidebar.classList.remove('open');
-                hamburger.classList.remove('open');
-            }
-        });
-
-        // ── Close sidebar on nav link click (mobile) ──
-        document.querySelectorAll('.sidebar-nav a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                if (window.innerWidth <= 900) {
-                    document.getElementById('sidebar').classList.remove('open');
-                    document.querySelector('.hamburger').classList.remove('open');
-                }
-            });
-        });
-
         // ── Scroll Reveal ──
         var observer = new IntersectionObserver(function(entries) {
             entries.forEach(function(entry) {
