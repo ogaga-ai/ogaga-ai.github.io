@@ -854,11 +854,7 @@
                 </div>
             </div>
 
-            <!-- ── Live from GitHub ── -->
-            <h2 class="section-heading" style="margin-top: 40px;" id="github-activity">More Projects</h2>
-            <div id="github-repos-grid" style="display:grid; gap:16px;">
-                <div style="color: var(--text-muted); font-size:0.9rem; padding: 12px 0;">Loading repositories&hellip;</div>
-            </div>
+            <div id="github-repos-grid"></div>
 
             <!-- ── Testimonials ── -->
             <h2 class="section-heading" style="margin-top: 40px;" id="testimonials">What People Say</h2>
@@ -1063,28 +1059,23 @@
                         return !featured.has(r.name) && !r.fork && r.name !== 'ogaga-ai';
                     });
 
-                    if (filtered.length === 0) {
-                        grid.innerHTML = '<p style="color:var(--text-muted);font-size:0.9rem;">No additional public repositories found.</p>';
-                        return;
-                    }
+                    if (filtered.length === 0) { return; }
 
                     grid.innerHTML = filtered.map(function(repo) {
                         var lang = repo.language || '';
                         var dot  = lang ? '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:' + (langColors[lang] || '#aaa') + ';margin-right:5px;vertical-align:middle;"></span>' : '';
-                        var desc = repo.description ? repo.description : '<em style="color:var(--text-muted)">No description</em>';
-                        var homepage = repo.homepage ? '<a href="' + repo.homepage + '" target="_blank" class="card-link" style="font-size:0.82rem;">Live Demo &rarr;</a>' : '';
+                        var desc = repo.description ? repo.description : '';
+                        var homepage = repo.homepage ? '<a href="' + repo.homepage + '" target="_blank" class="card-link">Live Demo &rarr;</a>' : '';
                         return [
-                            '<div class="project-card reveal" style="padding:18px 20px;">',
-                            '  <div class="card-content" style="padding:0;">',
+                            '<div class="project-card reveal">',
+                            '  <div class="card-content">',
                             '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">',
-                            '      <h3 style="font-size:1rem;"><a href="' + repo.html_url + '" target="_blank" style="color:var(--text-primary);text-decoration:none;">' + repo.name + '</a></h3>',
-                            '      <span style="font-size:0.78rem;color:var(--text-muted);">Updated ' + timeAgo(repo.pushed_at) + '</span>',
+                            '      <h3><a href="' + repo.html_url + '" target="_blank" style="color:var(--text-primary);text-decoration:none;">' + repo.name + '</a></h3>',
                             '    </div>',
-                            '    <p style="font-size:0.88rem;margin-bottom:10px;">' + desc + '</p>',
+                            desc ? '    <p>' + desc + '</p>' : '',
                             '    <div style="display:flex;align-items:center;gap:16px;font-size:0.82rem;color:var(--text-muted);">',
                             '      <span>' + dot + lang + '</span>',
-                            '      <span>&#9733; ' + repo.stargazers_count + '</span>',
-                            '      <a href="' + repo.html_url + '" target="_blank" class="card-link" style="font-size:0.82rem;">GitHub &rarr;</a>',
+                            '      <a href="' + repo.html_url + '" target="_blank" class="card-link">GitHub &rarr;</a>',
                             '      ' + homepage,
                             '    </div>',
                             '  </div>',
@@ -1095,10 +1086,7 @@
                     // Animate new cards
                     grid.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
                 })
-                .catch(function() {
-                    document.getElementById('github-repos-grid').innerHTML =
-                        '<p style="color:var(--text-muted);font-size:0.9rem;">Could not load repositories — <a href="https://github.com/ogaga-ai" target="_blank">view on GitHub</a>.</p>';
-                });
+                .catch(function() {});
         })();
         // ──────────────────────────────────────────────────────────────────
     </script>
