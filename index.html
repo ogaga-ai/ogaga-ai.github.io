@@ -793,6 +793,8 @@
                 </div>
             </div>
 
+            <div id="personal-extra"></div>
+
             <!-- ── Hackathon Projects ── -->
             <h2 class="section-heading" style="margin-top: 36px;" id="hackathons">Hackathon Projects</h2>
 
@@ -829,7 +831,7 @@
                 </div>
             </div>
 
-            <div id="github-repos-grid"></div>
+            <div id="hackathon-extra"></div>
 
             <!-- ── Testimonials ── -->
             <h2 class="section-heading" style="margin-top: 40px;" id="testimonials">What People Say</h2>
@@ -1011,55 +1013,64 @@
                 'BioForge'
             ]);
 
+            // Any repo in this set goes under Hackathon Projects; everything else → Personal Projects
+            var hackathonRepos = new Set([
+                'mab-stability-ai',
+                'Dependency-Quarantine-Agent'
+            ]);
+
             var langColors = {
                 Python: '#3572A5', JavaScript: '#f1e05a', HTML: '#e34c26',
                 TypeScript: '#2b7489', Jupyter: '#DA5B0B', Shell: '#89e051',
                 MATLAB: '#e16737'
             };
 
-            function timeAgo(dateStr) {
-                var diff = (Date.now() - new Date(dateStr)) / 1000;
-                if (diff < 60)   return 'just now';
-                if (diff < 3600) return Math.floor(diff/60) + 'm ago';
-                if (diff < 86400) return Math.floor(diff/3600) + 'h ago';
-                if (diff < 2592000) return Math.floor(diff/86400) + 'd ago';
-                return new Date(dateStr).toLocaleDateString('en-US', {month:'short', year:'numeric'});
+            function makeCard(repo) {
+                var lang = repo.language || '';
+                var dot  = lang ? '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:' + (langColors[lang] || '#aaa') + ';margin-right:5px;vertical-align:middle;"></span>' : '';
+                var desc = repo.description || '';
+                var homepage = repo.homepage ? '<a href="' + repo.homepage + '" target="_blank" class="card-link">Live Demo &rarr;</a>' : '';
+                return [
+                    '<div class="project-card reveal">',
+                    '  <div class="card-content">',
+                    '    <h3><a href="' + repo.html_url + '" target="_blank" style="color:var(--text-primary);text-decoration:none;">' + repo.name + '</a></h3>',
+                    desc ? '    <p>' + desc + '</p>' : '',
+                    '    <div style="display:flex;align-items:center;gap:16px;font-size:0.82rem;color:var(--text-muted);">',
+                    '      <span>' + dot + lang + '</span>',
+                    '      <a href="' + repo.html_url + '" target="_blank" class="card-link">GitHub &rarr;</a>',
+                    '      ' + homepage,
+                    '    </div>',
+                    '  </div>',
+                    '</div>'
+                ].join('\n');
             }
 
             fetch('https://api.github.com/users/ogaga-ai/repos?sort=updated&per_page=20')
                 .then(function(r) { return r.json(); })
                 .then(function(repos) {
-                    var grid = document.getElementById('github-repos-grid');
                     var filtered = repos.filter(function(r) {
                         return !featured.has(r.name) && !r.fork && r.name !== 'ogaga-ai';
                     });
-
                     if (filtered.length === 0) { return; }
 
-                    grid.innerHTML = filtered.map(function(repo) {
-                        var lang = repo.language || '';
-                        var dot  = lang ? '<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:' + (langColors[lang] || '#aaa') + ';margin-right:5px;vertical-align:middle;"></span>' : '';
-                        var desc = repo.description ? repo.description : '';
-                        var homepage = repo.homepage ? '<a href="' + repo.homepage + '" target="_blank" class="card-link">Live Demo &rarr;</a>' : '';
-                        return [
-                            '<div class="project-card reveal">',
-                            '  <div class="card-content">',
-                            '    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">',
-                            '      <h3><a href="' + repo.html_url + '" target="_blank" style="color:var(--text-primary);text-decoration:none;">' + repo.name + '</a></h3>',
-                            '    </div>',
-                            desc ? '    <p>' + desc + '</p>' : '',
-                            '    <div style="display:flex;align-items:center;gap:16px;font-size:0.82rem;color:var(--text-muted);">',
-                            '      <span>' + dot + lang + '</span>',
-                            '      <a href="' + repo.html_url + '" target="_blank" class="card-link">GitHub &rarr;</a>',
-                            '      ' + homepage,
-                            '    </div>',
-                            '  </div>',
-                            '</div>'
-                        ].join('\n');
-                    }).join('\n');
+                    var personalHTML  = '';
+                    var hackathonHTML = '';
+                    filtered.forEach(function(repo) {
+                        if (hackathonRepos.has(repo.name)) {
+                            hackathonHTML += makeCard(repo);
+                        } else {
+                            personalHTML  += makeCard(repo);
+                        }
+                    });
 
-                    // Animate new cards
-                    grid.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+                    var personalEl  = document.getElementById('personal-extra');
+                    var hackathonEl = document.getElementById('hackathon-extra');
+                    if (personalHTML)  { personalEl.innerHTML  = personalHTML;  }
+                    if (hackathonHTML) { hackathonEl.innerHTML = hackathonHTML; }
+
+                    document.querySelectorAll('#personal-extra .reveal, #hackathon-extra .reveal').forEach(function(el) {
+                        observer.observe(el);
+                    });
                 })
                 .catch(function() {});
         })();
