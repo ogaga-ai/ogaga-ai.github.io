@@ -609,10 +609,24 @@
                     <div class="tl-date">GPA 4.2/5</div>
                 </div>
 
-                <a href="Ogaga_Okedi_Resume.pdf" download class="resume-btn" style="margin-top: 14px;">
+                <a href="#" onclick="document.getElementById('resume-modal').style.display='flex'; return false;" class="resume-btn" style="margin-top: 14px;">
                     <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polyline points="7 10 12 15 17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
-                    Download Full Resume
+                    View / Download Resume
                 </a>
+
+                <!-- Resume Modal -->
+                <div id="resume-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center;">
+                    <div style="background:#fff; border-radius:12px; width:90%; max-width:860px; height:90vh; display:flex; flex-direction:column; overflow:hidden;">
+                        <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 20px; border-bottom:1px solid #e8e8e8;">
+                            <span style="font-weight:600; font-size:15px;">Ogaga Okedi — Resume</span>
+                            <div style="display:flex; gap:10px; align-items:center;">
+                                <a href="Ogaga_Okedi_Resume.pdf" download="Ogaga_Okedi_Resume.pdf" style="background:#4361ee; color:#fff; padding:7px 16px; border-radius:7px; font-size:13px; font-weight:600; text-decoration:none;">Download</a>
+                                <button onclick="document.getElementById('resume-modal').style.display='none';" style="background:none; border:none; font-size:22px; cursor:pointer; color:#666; line-height:1;">&times;</button>
+                            </div>
+                        </div>
+                        <iframe src="Ogaga_Okedi_Resume.pdf" style="flex:1; border:none; width:100%;"></iframe>
+                    </div>
+                </div>
             </div>
 
             <div class="sidebar-section">
