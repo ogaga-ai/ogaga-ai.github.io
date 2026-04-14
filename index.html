@@ -609,24 +609,142 @@
                     <div class="tl-date">GPA 4.2/5</div>
                 </div>
 
-                <a href="#" onclick="document.getElementById('resume-modal').style.display='flex'; return false;" class="resume-btn" style="margin-top: 14px;">
+                <a href="#" onclick="openResumeModal(); return false;" class="resume-btn" style="margin-top: 14px;">
                     <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><polyline points="7 10 12 15 17 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/><line x1="12" y1="15" x2="12" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
                     View / Download Resume
                 </a>
 
                 <!-- Resume Modal -->
-                <div id="resume-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.75); z-index:9999; align-items:center; justify-content:center;">
-                    <div style="background:#fff; border-radius:12px; width:90%; max-width:860px; height:90vh; display:flex; flex-direction:column; overflow:hidden;">
-                        <div style="display:flex; justify-content:space-between; align-items:center; padding:14px 20px; border-bottom:1px solid #e8e8e8;">
-                            <span style="font-weight:600; font-size:15px;">Ogaga Okedi — Resume</span>
-                            <div style="display:flex; gap:10px; align-items:center;">
-                                <a href="Ogaga_Okedi_Resume.pdf" download="Ogaga_Okedi_Resume.pdf" style="background:#4361ee; color:#fff; padding:7px 16px; border-radius:7px; font-size:13px; font-weight:600; text-decoration:none;">Download</a>
-                                <button onclick="document.getElementById('resume-modal').style.display='none';" style="background:none; border:none; font-size:22px; cursor:pointer; color:#666; line-height:1;">&times;</button>
+                <!-- Resume Modal -->
+                <style>
+                    #resume-modal {
+                        display: none;
+                        position: fixed;
+                        top: 0; left: 0;
+                        width: 100%; height: 100%;
+                        background: rgba(0,0,0,0.82);
+                        z-index: 9999;
+                        align-items: center;
+                        justify-content: center;
+                        padding: 16px;
+                        box-sizing: border-box;
+                    }
+                    #resume-modal-inner {
+                        background: #fff;
+                        border-radius: 14px;
+                        width: 100%;
+                        max-width: 1000px;
+                        height: 90vh;
+                        min-height: 500px;
+                        display: flex;
+                        flex-direction: column;
+                        overflow: hidden;
+                        box-shadow: 0 24px 80px rgba(0,0,0,0.5);
+                    }
+                    #resume-modal-header {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 12px 18px;
+                        border-bottom: 1px solid #e8e8e8;
+                        flex-shrink: 0;
+                        gap: 10px;
+                    }
+                    #resume-modal-header span {
+                        font-weight: 700;
+                        font-size: 14px;
+                        color: #111;
+                        white-space: nowrap;
+                    }
+                    #resume-modal-header .btn-group {
+                        display: flex;
+                        gap: 8px;
+                        align-items: center;
+                        flex-wrap: wrap;
+                    }
+                    .modal-btn-primary {
+                        background: #4361ee;
+                        color: #fff;
+                        padding: 7px 15px;
+                        border-radius: 7px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        text-decoration: none;
+                        white-space: nowrap;
+                    }
+                    .modal-btn-secondary {
+                        background: #f0f0f0;
+                        color: #333;
+                        padding: 7px 15px;
+                        border-radius: 7px;
+                        font-size: 13px;
+                        font-weight: 600;
+                        text-decoration: none;
+                        white-space: nowrap;
+                    }
+                    .modal-close-btn {
+                        background: none;
+                        border: none;
+                        font-size: 26px;
+                        cursor: pointer;
+                        color: #666;
+                        line-height: 1;
+                        padding: 0 2px;
+                        flex-shrink: 0;
+                    }
+                    #resume-iframe-wrap {
+                        flex: 1;
+                        min-height: 0;
+                        position: relative;
+                        background: #525659;
+                    }
+                    #resume-iframe-wrap iframe {
+                        position: absolute;
+                        top: 0; left: 0;
+                        width: 100%;
+                        height: 100%;
+                        border: none;
+                    }
+                    @media (max-width: 600px) {
+                        #resume-modal { padding: 8px; }
+                        #resume-modal-inner { height: 95vh; border-radius: 10px; }
+                        #resume-modal-header span { font-size: 12px; }
+                    }
+                </style>
+
+                <div id="resume-modal" onclick="if(event.target===this)closeResumeModal();">
+                    <div id="resume-modal-inner">
+                        <div id="resume-modal-header">
+                            <span>Ogaga Okedi — Resume</span>
+                            <div class="btn-group">
+                                <a href="Ogaga_Okedi_Resume.pdf" target="_blank" rel="noopener" class="modal-btn-primary">Open in Tab</a>
+                                <a href="Ogaga_Okedi_Resume.pdf" download="Ogaga_Okedi_Resume.pdf" class="modal-btn-secondary">Download</a>
+                                <button class="modal-close-btn" onclick="closeResumeModal();">&times;</button>
                             </div>
                         </div>
-                        <iframe src="Ogaga_Okedi_Resume.pdf" style="flex:1; border:none; width:100%;"></iframe>
+                        <div id="resume-iframe-wrap">
+                            <iframe id="resume-iframe" src="" allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
+
+                <script>
+                    function openResumeModal() {
+                        var iframe = document.getElementById('resume-iframe');
+                        if (!iframe.src || iframe.src === window.location.href) {
+                            iframe.src = 'Ogaga_Okedi_Resume.pdf#navpanes=0&toolbar=1&view=FitH';
+                        }
+                        document.getElementById('resume-modal').style.display = 'flex';
+                        document.body.style.overflow = 'hidden';
+                    }
+                    function closeResumeModal() {
+                        document.getElementById('resume-modal').style.display = 'none';
+                        document.body.style.overflow = '';
+                    }
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'Escape') closeResumeModal();
+                    });
+                </script>
             </div>
 
             <div class="sidebar-section">
@@ -803,6 +921,23 @@
                     <p>Open-source framework for optimizing the conversion of U.S. agricultural waste streams into high-value biochemicals. Validated on citric acid production from yam peel waste (R²&nbsp;=&nbsp;0.99883, 43.08&nbsp;g/L). Scale-up design: 95.4% recovery across 50 hollow-fiber membrane modules. Results openly published and accessible to U.S. research institutions and industry.</p>
                     <div class="card-links">
                         <a href="https://github.com/ogaga-ai/biomass-conversion-optimization" target="_blank" class="card-link">GitHub &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card reveal">
+                <div class="card-content">
+                    <h3>Enzyme Thermostability Prediction with ESM-2</h3>
+                    <div class="card-tags">
+                        <span class="card-tag">PyTorch</span>
+                        <span class="card-tag">ESM-2 (150M)</span>
+                        <span class="card-tag">Transformers</span>
+                        <span class="card-tag">Protein ML</span>
+                        <span class="card-tag">UMAP</span>
+                    </div>
+                    <p>Predicts enzyme melting temperature (Tm) from amino acid sequence using Meta's ESM-2 protein language model — trained on 250M sequences across all of evolution. ESM-2 mean-pooled embeddings augmented with physicochemical features achieve Spearman&nbsp;ρ&nbsp;=&nbsp;0.673, a 20% improvement over the hand-crafted baseline. Directly motivated by industrial enzyme engineering for fermentation and bioconversion systems.</p>
+                    <div class="card-links">
+                        <a href="https://github.com/ogaga-ai/enzyme-thermostability" target="_blank" class="card-link">GitHub &rarr;</a>
                     </div>
                 </div>
             </div>
@@ -1024,7 +1159,8 @@
                 'sentiment-analysis-project',
                 'mab-stability-ai',
                 'Dependency-Quarantine-Agent',
-                'biomass-conversion-optimization'
+                'biomass-conversion-optimization',
+                'enzyme-thermostability'
             ]);
 
             // Any repo in this set goes under Hackathon Projects; everything else → Personal Projects
