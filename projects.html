@@ -301,6 +301,59 @@
 
         <!-- ── General AI ── -->
         <div class="project-card" data-tab="general">
+            <h3>Multi-Stage Neural Retrieval Pipeline</h3>
+            <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">BM25</span>
+                <span class="card-tag">Bi-Encoder</span>
+                <span class="card-tag">Cross-Encoder</span>
+                <span class="card-tag">MS MARCO</span>
+                <span class="card-tag">sentence-transformers</span>
+                <span class="card-tag">FAISS</span>
+                <span class="card-tag">Information Retrieval</span>
+            </div>
+            <p>Three-stage retrieval pipeline: BM25 sparse retrieval → MS MARCO fine-tuned bi-encoder re-ranking → cross-encoder re-ranking. Achieves MRR@10 = 0.825 on SQuAD v1.1 — a +32.8% relative improvement over BM25 baseline. Includes latency profiling at each stage showing the speed/quality tradeoff.</p>
+            <div class="card-links">
+                <a href="https://github.com/ogaga-ai/neural-retrieval" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
+        <div class="project-card" data-tab="general">
+            <h3>Transaction Fraud Detection Pipeline</h3>
+            <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">XGBoost</span>
+                <span class="card-tag">CatBoost</span>
+                <span class="card-tag">scikit-learn</span>
+                <span class="card-tag">FastAPI</span>
+                <span class="card-tag">Pydantic</span>
+                <span class="card-tag">pandas</span>
+                <span class="card-tag">Class Imbalance</span>
+            </div>
+            <p>End-to-end fraud detection on 284K synthetic transactions (0.2% fraud rate, 513:1 class imbalance). XGBoost achieves AUC-ROC = 0.945, AUPRC = 0.529 using scale_pos_weight and engineered features (log_amount, hour_of_day, amount_zscore). Includes a FastAPI endpoint for real-time transaction scoring.</p>
+            <div class="card-links">
+                <a href="https://github.com/ogaga-ai/fraud-detection" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
+        <div class="project-card" data-tab="general">
+            <h3>Semantic Job-Candidate Matching</h3>
+            <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">sentence-transformers</span>
+                <span class="card-tag">FAISS</span>
+                <span class="card-tag">Dense Retrieval</span>
+                <span class="card-tag">Cosine Similarity</span>
+                <span class="card-tag">pandas</span>
+                <span class="card-tag">numpy</span>
+            </div>
+            <p>Dense retrieval system matching candidate profiles to job openings using sentence-transformers and FAISS vector search. Achieves 99.5% domain accuracy @1 and 100% @3 across 1,000 candidates and 500 jobs in 5 occupational domains. Pre-computed passage embeddings enable sub-20ms query latency at serving time.</p>
+            <div class="card-links">
+                <a href="https://github.com/ogaga-ai/job-matching" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
+        <div class="project-card" data-tab="general">
             <h3>Classifying Feedback Using Sentiment Analysis</h3>
             <div class="card-tags">
                 <span class="card-tag">Python</span>
@@ -320,6 +373,25 @@
         </div>
 
         <!-- ── Tech AI for Science + EV Energy ── -->
+        <div class="project-card" data-tab="tech">
+            <h3>Battery State-of-Health Prediction</h3>
+            <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">PyTorch</span>
+                <span class="card-tag">XGBoost</span>
+                <span class="card-tag">scikit-learn</span>
+                <span class="card-tag">LSTM</span>
+                <span class="card-tag">Random Forest</span>
+                <span class="card-tag">Physics-Based Simulation</span>
+                <span class="card-tag">pandas</span>
+                <span class="card-tag">numpy</span>
+            </div>
+            <p>Predicts lithium-ion battery capacity fade (State of Health) over 500 charge/discharge cycles using physics-based degradation simulation. Random Forest achieves R² = 0.9998, RMSE = 0.093% SoH with battery-level train/test split to prevent data leakage. Directly applicable to EV battery management systems and grid storage analytics.</p>
+            <div class="card-links">
+                <a href="https://github.com/ogaga-ai/battery-soh" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
         <div class="project-card" data-tab="tech">
             <h3>NMR Diffusion Analysis</h3>
             <div class="card-tags">
