@@ -597,7 +597,7 @@
 
             <div class="sidebar-section">
                 <h3>About</h3>
-                <p>Math-first engineering background. CS-focused AI/ML builder. I develop and deploy machine-learning applications that solve real problems. Incoming M.S. Computer Science student at UT Dallas.</p>
+                <p>I trained as a chemical engineer and retrained as an ML engineer. I build things that sit at the intersection of both where domain expertise meets real computational work. Currently pursuing M.S. Computer Science at UT Dallas.</p>
             </div>
 
             <div class="sidebar-section">
@@ -915,7 +915,8 @@
                         <span class="card-tag">pandas</span>
                         <span class="card-tag">matplotlib</span>
                     </div>
-                    <p>The ML model predicts enzyme melting temperature (Tm) from amino acid sequence using Meta's ESM-2 protein language model trained on 250M sequences across all of evolution. ESM-2 mean-pooled embeddings augmented with physicochemical features achieve Spearman&nbsp;ρ&nbsp;=&nbsp;0.673, a 20% improvement over the hand-crafted baseline. Directly motivated by industrial enzyme engineering for fermentation and bioconversion systems.</p>
+                    <p>Most industrial enzymes fail above 40°C. The reactors that need them run at 60–80°C. I built a model that predicts how stable an enzyme will be before you ever touch a lab.</p>
+                    <p>It uses Meta's ESM-2, a protein language model trained on 250 million sequences, to extract meaning from an amino acid sequence the way a language model extracts meaning from text. Spearman ρ = 0.673. A 20% improvement over the traditional baseline.</p>
                     <div class="card-links">
                         <a href="https://github.com/ogaga-ai/enzyme-thermostability" target="_blank" class="card-link">GitHub &rarr;</a>
                     </div>
@@ -939,7 +940,8 @@
                         <span class="card-tag">pandas</span>
                         <span class="card-tag">matplotlib</span>
                     </div>
-                    <p>Open-source framework for optimizing the conversion of U.S. agricultural waste streams into high-value biochemicals. Validated on citric acid production from yam peel waste (R²&nbsp;=&nbsp;0.99883, 43.08&nbsp;g/L). Scale-up design: 95.4% recovery across 50 hollow-fiber membrane modules. Results openly published and accessible to U.S. research institutions and industry.</p>
+                    <p>Agricultural waste is one of the most undervalued resources in the world. This project turns that waste into biochemicals. It does it with math.</p>
+                    <p>Validated on citric acid production from yam peel waste. R²&nbsp;=&nbsp;0.99883. 43.08&nbsp;g/L yield. Scale-up design with 95.4% recovery across 50 membrane modules. Published and open to any research institution that needs it.</p>
                     <div class="card-links">
                         <a href="https://github.com/ogaga-ai/biomass-conversion-optimization" target="_blank" class="card-link">GitHub &rarr;</a>
                     </div>
@@ -960,7 +962,8 @@
                         <span class="card-tag">FAISS</span>
                         <span class="card-tag">Information Retrieval</span>
                     </div>
-                    <p>Three-stage retrieval pipeline: BM25 → MS MARCO fine-tuned bi-encoder → cross-encoder re-ranking. Achieves MRR@10 = 0.825 on SQuAD v1.1 — a +32.8% relative improvement over BM25. Each stage trades latency for precision, from 5ms (BM25) to 50ms on GPU (cross-encoder).</p>
+                    <p>Search is a harder problem than it looks. Keyword matching finds what you typed. It doesn't find what you meant.</p>
+                    <p>I built a three-stage pipeline that closes that gap. BM25 for speed, a bi-encoder for semantic understanding, a cross-encoder for precision. Each stage re-ranks what the last one missed. MRR@10 = 0.825. A 32.8% improvement over keyword search alone.</p>
                     <div class="card-links">
                         <a href="https://github.com/ogaga-ai/neural-retrieval" target="_blank" class="card-link">GitHub &rarr;</a>
                     </div>
@@ -989,7 +992,8 @@
                         <span class="card-tag">Prompt Engineering</span>
                         <span class="card-tag">Biopharma</span>
                     </div>
-                    <p>AI-powered tool that predicts monoclonal antibody stability under interfacial stress. Analyses formulation parameters, explains degradation mechanisms, and compares formulation strategies.</p>
+                    <p>Biologics drugs fail when the protein unfolds. Formulation teams spend weeks in the lab figuring out why.</p>
+                    <p>This tool runs that analysis in minutes. It takes your formulation parameters, predicts degradation under interfacial stress, and explains exactly what is happening, and why.</p>
                     <div class="card-links">
                         <a href="https://mab-stability-ai-gqqkgltxnv34zcwwwd5rapp.streamlit.app" target="_blank" class="card-link">Live Demo &rarr;</a>
                         <a href="https://github.com/ogaga-ai/mab-stability-ai" target="_blank" class="card-link">GitHub &rarr;</a>
@@ -1078,7 +1082,7 @@
                             <span class="card-tag">NLP</span>
                             <span class="card-tag">Scikit-learn</span>
                         </div>
-                        <p>Building an end-to-end NLP pipeline — from merging three datasets to comparing four classifiers and deploying to Streamlit Cloud.</p>
+                        <p>238,000 reviews. Three datasets. Four classifiers. One question: which one actually works. This is how I found out.</p>
                     </a>
 
                     <div class="blog-card reveal blog-coming">
@@ -1088,7 +1092,7 @@
                             <span class="card-tag">MLOps</span>
                             <span class="card-tag">Deployment</span>
                         </div>
-                        <p>Lessons from shipping two apps — managing dependencies, model file sizes, and making ML accessible to non-technical users.</p>
+                        <p>Shipping a model is not the same as building one. These are the things nobody tells you until something breaks in production.</p>
                     </div>
 
                     <div class="blog-card reveal blog-coming">
@@ -1098,7 +1102,7 @@
                             <span class="card-tag">Gemini API</span>
                             <span class="card-tag">LLMs</span>
                         </div>
-                        <p>Designing prompts to make an LLM reason about monoclonal antibody stability — bridging chemistry and AI.</p>
+                        <p>Most people use LLMs for text. I used one to reason about protein degradation. Here is what I learned about the gap between chemistry and AI.</p>
                     </div>
                 </div>
             </div>

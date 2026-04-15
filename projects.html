@@ -252,7 +252,7 @@
                 <span class="card-tag">pandas</span>
                 <span class="card-tag">matplotlib</span>
             </div>
-            <p>The ML model predicts enzyme melting temperature (Tm) from amino acid sequence using Meta's ESM-2 protein language model trained on 250M sequences across all of evolution. ESM-2 mean-pooled embeddings augmented with physicochemical features achieve Spearman ρ = 0.673, a 20% improvement over the hand-crafted baseline. Directly motivated by industrial enzyme engineering for fermentation and bioconversion systems.</p>
+            <p>Most industrial enzymes fail above 40°C. The reactors that need them run at 60–80°C. This model predicts stability from amino acid sequence alone, using Meta's ESM-2 trained on 250 million sequences across evolution. Spearman ρ = 0.673. A 20% improvement over the hand-crafted baseline.</p>
             <div class="card-links">
                 <a href="https://github.com/ogaga-ai/enzyme-thermostability" target="_blank" class="card-link">GitHub &rarr;</a>
             </div>
@@ -274,7 +274,7 @@
                 <span class="card-tag">pandas</span>
                 <span class="card-tag">matplotlib</span>
             </div>
-            <p>Open-source framework for optimizing the conversion of U.S. agricultural waste streams into high-value biochemicals. Validated on citric acid production from yam peel waste (R² = 0.99883, 43.08 g/L). Scale-up design: 95.4% recovery across 50 hollow-fiber membrane modules. Results openly published and accessible to U.S. research institutions and industry.</p>
+            <p>Agricultural waste is one of the most undervalued resources in the world. This framework turns that waste into biochemicals using ML-guided design of experiments. Validated on citric acid production from yam peel waste: R² = 0.99883, 43.08 g/L yield, 95.4% recovery across 50 membrane modules. Published and open to any research institution that needs it.</p>
             <div class="card-links">
                 <a href="https://github.com/ogaga-ai/biomass-conversion-optimization" target="_blank" class="card-link">GitHub &rarr;</a>
             </div>
@@ -292,7 +292,7 @@
                 <span class="card-tag">Prompt Engineering</span>
                 <span class="card-tag">Biopharma</span>
             </div>
-            <p>AI-powered tool that predicts monoclonal antibody stability under interfacial stress. Analyses formulation parameters, explains degradation mechanisms, and compares formulation strategies. Built for early-stage biologics drug development workflows.</p>
+            <p>Biologics drugs fail when the protein unfolds. Formulation teams spend weeks in the lab figuring out why. This tool runs that analysis in minutes. Input your formulation parameters, and it predicts degradation under interfacial stress and explains exactly what is happening.</p>
             <div class="card-links">
                 <a href="https://mab-stability-ai-gqqkgltxnv34zcwwwd5rapp.streamlit.app" target="_blank" class="card-link">Live Demo &rarr;</a>
                 <a href="https://github.com/ogaga-ai/mab-stability-ai" target="_blank" class="card-link">GitHub &rarr;</a>
@@ -312,7 +312,7 @@
                 <span class="card-tag">FAISS</span>
                 <span class="card-tag">Information Retrieval</span>
             </div>
-            <p>Three-stage retrieval pipeline: BM25 sparse retrieval → MS MARCO fine-tuned bi-encoder re-ranking → cross-encoder re-ranking. Achieves MRR@10 = 0.825 on SQuAD v1.1 — a +32.8% relative improvement over BM25 baseline. Includes latency profiling at each stage showing the speed/quality tradeoff.</p>
+            <p>Search is a harder problem than it looks. Keyword matching finds what you typed. It doesn't find what you meant. This three-stage pipeline closes that gap: BM25 for speed, a bi-encoder for semantic understanding, a cross-encoder for precision. MRR@10 = 0.825. A 32.8% improvement over keyword search alone.</p>
             <div class="card-links">
                 <a href="https://github.com/ogaga-ai/neural-retrieval" target="_blank" class="card-link">GitHub &rarr;</a>
             </div>
@@ -330,7 +330,7 @@
                 <span class="card-tag">pandas</span>
                 <span class="card-tag">Class Imbalance</span>
             </div>
-            <p>End-to-end fraud detection on 284K synthetic transactions (0.2% fraud rate, 513:1 class imbalance). XGBoost achieves AUC-ROC = 0.945, AUPRC = 0.529 using scale_pos_weight and engineered features (log_amount, hour_of_day, amount_zscore). Includes a FastAPI endpoint for real-time transaction scoring.</p>
+            <p>Fraud is rare by design. When it happens less than 0.2% of the time, most models miss it entirely. This pipeline handles 284K transactions at a 513:1 class imbalance and still reaches AUC-ROC = 0.945. It ships with a FastAPI endpoint for real-time scoring.</p>
             <div class="card-links">
                 <a href="https://github.com/ogaga-ai/fraud-detection" target="_blank" class="card-link">GitHub &rarr;</a>
             </div>
@@ -347,7 +347,7 @@
                 <span class="card-tag">pandas</span>
                 <span class="card-tag">numpy</span>
             </div>
-            <p>Dense retrieval system matching candidate profiles to job openings using sentence-transformers and FAISS vector search. Achieves 99.5% domain accuracy @1 and 100% @3 across 1,000 candidates and 500 jobs in 5 occupational domains. Pre-computed passage embeddings enable sub-20ms query latency at serving time.</p>
+            <p>Job boards match keywords. This system matches meaning. It encodes candidate profiles and job descriptions into the same vector space, then retrieves the best match in under 20 milliseconds. 99.5% domain accuracy at rank 1 across 1,000 candidates and 500 jobs.</p>
             <div class="card-links">
                 <a href="https://github.com/ogaga-ai/job-matching" target="_blank" class="card-link">GitHub &rarr;</a>
             </div>
@@ -365,7 +365,7 @@
                 <span class="card-tag">pandas</span>
                 <span class="card-tag">NLTK</span>
             </div>
-            <p>End-to-end NLP pipeline processing 238K reviews from IMDB, Amazon, and Yelp. Logistic Regression achieves 91.4% accuracy with TF-IDF features. Includes batch analysis, model comparison, and an interactive Streamlit dashboard for real-time classification.</p>
+            <p>238,000 reviews. Three datasets. Four classifiers. One question: which one actually works. The answer is Logistic Regression with TF-IDF features at 91.4% accuracy, deployed to a Streamlit dashboard you can use right now.</p>
             <div class="card-links">
                 <a href="https://sentiment-analysis-project-bbi8m7rcxtcwngvcmnbzmy.streamlit.app" target="_blank" class="card-link">Live Demo &rarr;</a>
                 <a href="https://github.com/ogaga-ai/sentiment-analysis-project" target="_blank" class="card-link">GitHub &rarr;</a>
@@ -386,7 +386,7 @@
                 <span class="card-tag">pandas</span>
                 <span class="card-tag">numpy</span>
             </div>
-            <p>Predicts lithium-ion battery capacity fade (State of Health) over 500 charge/discharge cycles using physics-based degradation simulation. Random Forest achieves R² = 0.9998, RMSE = 0.093% SoH with battery-level train/test split to prevent data leakage. Directly applicable to EV battery management systems and grid storage analytics.</p>
+            <p>Every battery in every EV is degrading. The question is how fast, and what that means for the car. This model predicts capacity fade over 500 charge cycles using physics-based degradation simulation. Random Forest: R² = 0.9998, RMSE = 0.093% SoH. Battery-level train/test split to prevent data leakage.</p>
             <div class="card-links">
                 <a href="https://github.com/ogaga-ai/battery-soh" target="_blank" class="card-link">GitHub &rarr;</a>
             </div>
@@ -402,7 +402,7 @@
                 <span class="card-tag">Signal Processing</span>
                 <span class="card-tag">Scientific Computing</span>
             </div>
-            <p>MATLAB-based analysis pipeline for NMR diffusion-weighted imaging data. Implements mono- and bi-exponential ADC curve fitting with iterating initial guess optimization. Handles normalization, signal decay modeling, and quantitative diffusion coefficient extraction from raw NMR data.</p>
+            <p>Diffusion-weighted NMR data is noisy, and extracting reliable diffusion coefficients from it requires more than a curve fit. This MATLAB pipeline implements mono- and bi-exponential ADC modeling with iterating initial guess optimization, turning raw signal decay into quantitative measurements.</p>
             <div class="card-links">
                 <a href="https://github.com/ogaga-ai/NMR-Diffusion-Analysis" target="_blank" class="card-link">GitHub &rarr;</a>
             </div>
@@ -419,7 +419,7 @@
                 <span class="card-tag">Hessian Matrix</span>
                 <span class="card-tag">Nonlinear Equations</span>
             </div>
-            <p>MATLAB implementations of core numerical methods used in computational science and engineering: Euler's method for ODEs, Newton-Raphson for nonlinear systems, numerical integration (trapezoidal, Simpson's), and Hessian matrix computation for optimization. Foundation for physics-based simulation and process modeling work.</p>
+            <p>Every physics-based simulation and optimization model traces back to a handful of numerical methods. This is that foundation. Newton-Raphson for nonlinear systems, Euler for ODEs, trapezoidal and Simpson's for integration, Hessian for optimization. Clean, documented MATLAB implementations.</p>
             <div class="card-links">
                 <a href="https://github.com/ogaga-ai/Computation-Fundamentals" target="_blank" class="card-link">GitHub &rarr;</a>
             </div>
