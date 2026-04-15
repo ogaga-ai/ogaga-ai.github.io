@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Ogaga Okedi</title>
+
+    <meta name="description" content="Full project portfolio of Ogaga Okedi — AI/ML Engineer. Biopharma AI, General AI, and Tech AI for Science and EV Energy.">
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234361ee'/><text x='50' y='68' font-family='Arial,sans-serif' font-size='48' font-weight='bold' fill='white' text-anchor='middle'>AI</text></svg>">
+
+    <!-- Google Analytics 4 -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9VB4DJ0ZFE"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-9VB4DJ0ZFE');
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f5f5f5;
+            --bg-card: #ffffff;
+            --border: #e8e8e8;
+            --text-primary: #111111;
+            --text-secondary: #111111;
+            --text-muted: #555;
+            --accent: #4361ee;
+            --accent-bg: #eef0ff;
+            --accent-bg-hover: #dde1ff;
+            --card-hover-shadow: rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--bg);
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ── Top nav ── */
+        .topnav {
+            background: #fff;
+            border-bottom: 1px solid var(--border);
+            padding: 14px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .topnav-brand {
+            font-weight: 700;
+            font-size: 1rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .topnav-brand:hover { text-decoration: none; }
+        .topnav-back {
+            font-size: 0.85rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* ── Page header ── */
+        .page-header {
+            max-width: 900px;
+            margin: 48px auto 0;
+            padding: 0 24px;
+        }
+        .page-header h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .page-header p {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        /* ── Tabs ── */
+        .tabs-wrapper {
+            max-width: 900px;
+            margin: 36px auto 0;
+            padding: 0 24px;
+        }
+        .tabs {
+            display: flex;
+            gap: 8px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0;
+            flex-wrap: wrap;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+            color: var(--text-muted);
+            border-bottom: 3px solid transparent;
+            margin-bottom: -2px;
+            transition: color 0.2s, border-color 0.2s;
+            border-radius: 6px 6px 0 0;
+        }
+        .tab-btn:hover { color: var(--accent); background: var(--accent-bg); }
+        .tab-btn.active { color: var(--accent); border-bottom-color: var(--accent); }
+
+        /* ── Project grid ── */
+        .projects-grid {
+            max-width: 900px;
+            margin: 32px auto 60px;
+            padding: 0 24px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 24px 28px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            display: none;
+        }
+        .project-card.visible {
+            display: block;
+            animation: fadeUp 0.35s ease forwards;
+        }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .project-card:hover {
+            box-shadow: 0 4px 20px var(--card-hover-shadow);
+            transform: translateY(-2px);
+        }
+
+        .project-card h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 10px;
+        }
+
+        .card-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .card-tag {
+            background: var(--accent-bg);
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 20px;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.65;
+            margin-bottom: 14px;
+        }
+
+        .card-links { display: flex; gap: 14px; flex-wrap: wrap; }
+        .card-link {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+        .card-link:hover { text-decoration: underline; }
+
+        /* ── Empty state ── */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            display: none;
+        }
+        .empty-state.visible { display: block; }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .topnav { padding: 12px 20px; }
+            .page-header { margin-top: 32px; }
+            .page-header h1 { font-size: 1.5rem; }
+            .tab-btn { padding: 8px 14px; font-size: 0.82rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Nav -->
+    <nav class="topnav">
+        <a href="index.html" class="topnav-brand">Ogaga Okedi</a>
+        <a href="index.html" class="topnav-back">&larr; Back to Portfolio</a>
+    </nav>
+
+    <!-- Header -->
+    <div class="page-header">
+        <h1>All Projects</h1>
+        <p>A full view of my work across Biopharma AI, General AI, and Tech AI for Science and EV Energy.</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="tabs-wrapper">
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('biopharma', this)">Biopharma AI</button>
+            <button class="tab-btn" onclick="switchTab('general', this)">General AI</button>
+            <button class="tab-btn" onclick="switchTab('tech', this)">Tech AI for Science + EV Energy</button>
+        </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="projects-grid" id="projects-grid">
+
+        <!-- ── Biopharma AI ── -->
+        <div class="project-card visible" data-tab="biopharma">
+            <h3>Enzyme Thermostability Prediction with ESM-2</h3>
+            <div class="card-tags">
+                <span class="card-tag">PyTorch</span>
+                <span class="card-tag">HuggingFace Transformers</span>
+                <span class="card-tag">ESM-2 (150M)</span>
+                <span class="card-tag">scikit-learn</span>
+                <span class="card-tag">Ridge Regression</span>
+                <span class="card-tag">Gradient Boosting</span>
+                <span class="card-tag">UMAP</span>
+                <span class="card-tag">NumPy</span>
+                <span class="card-tag">pandas</span>
+                <span class="card-tag">matplotlib</span>
+            </div>
+            <p>The ML model predicts enzyme melting temperature (Tm) from amino acid sequence using Meta's ESM-2 protein language model trained on 250M sequences across all of evolution. ESM-2 mean-pooled embeddings augmented with physicochemical features achieve Spearman ρ = 0.673, a 20% improvement over the hand-crafted baseline. Directly motivated by industrial enzyme engineering for fermentation and bioconversion systems.</p>
+            <div class="card-links">
+                <a href="https://github.com/ogaga-ai/enzyme-thermostability" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
+        <div class="project-card visible" data-tab="biopharma">
+            <h3>Biomass Conversion Optimization DOE and ML Research Framework</h3>
+            <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">scikit-learn</span>
+                <span class="card-tag">ANN</span>
+                <span class="card-tag">Random Forest</span>
+                <span class="card-tag">Gradient Boosting</span>
+                <span class="card-tag">SVR</span>
+                <span class="card-tag">Bayesian Optimization</span>
+                <span class="card-tag">Sobol Sensitivity Analysis</span>
+                <span class="card-tag">Box-Behnken DOE</span>
+                <span class="card-tag">NumPy</span>
+                <span class="card-tag">pandas</span>
+                <span class="card-tag">matplotlib</span>
+            </div>
+            <p>Open-source framework for optimizing the conversion of U.S. agricultural waste streams into high-value biochemicals. Validated on citric acid production from yam peel waste (R² = 0.99883, 43.08 g/L). Scale-up design: 95.4% recovery across 50 hollow-fiber membrane modules. Results openly published and accessible to U.S. research institutions and industry.</p>
+            <div class="card-links">
+                <a href="https://github.com/ogaga-ai/biomass-conversion-optimization" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
+        <div class="project-card visible" data-tab="biopharma">
+            <h3>mAb StabilityAI</h3>
+            <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">Streamlit</span>
+                <span class="card-tag">Google Gemini API</span>
+                <span class="card-tag">SciPy</span>
+                <span class="card-tag">NumPy</span>
+                <span class="card-tag">Kinetic Modeling</span>
+                <span class="card-tag">Prompt Engineering</span>
+                <span class="card-tag">Biopharma</span>
+            </div>
+            <p>AI-powered tool that predicts monoclonal antibody stability under interfacial stress. Analyses formulation parameters, explains degradation mechanisms, and compares formulation strategies. Built for early-stage biologics drug development workflows.</p>
+            <div class="card-links">
+                <a href="https://mab-stability-ai-gqqkgltxnv34zcwwwd5rapp.streamlit.app" target="_blank" class="card-link">Live Demo &rarr;</a>
+                <a href="https://github.com/ogaga-ai/mab-stability-ai" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
+        <!-- ── General AI ── -->
+        <div class="project-card" data-tab="general">
+            <h3>Classifying Feedback Using Sentiment Analysis</h3>
+            <div class="card-tags">
+                <span class="card-tag">Python</span>
+                <span class="card-tag">NLP</span>
+                <span class="card-tag">scikit-learn</span>
+                <span class="card-tag">TF-IDF</span>
+                <span class="card-tag">Logistic Regression</span>
+                <span class="card-tag">Streamlit</span>
+                <span class="card-tag">pandas</span>
+                <span class="card-tag">NLTK</span>
+            </div>
+            <p>End-to-end NLP pipeline processing 238K reviews from IMDB, Amazon, and Yelp. Logistic Regression achieves 91.4% accuracy with TF-IDF features. Includes batch analysis, model comparison, and an interactive Streamlit dashboard for real-time classification.</p>
+            <div class="card-links">
+                <a href="https://sentiment-analysis-project-bbi8m7rcxtcwngvcmnbzmy.streamlit.app" target="_blank" class="card-link">Live Demo &rarr;</a>
+                <a href="https://github.com/ogaga-ai/sentiment-analysis-project" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
+        <!-- ── Tech AI for Science + EV Energy ── -->
+        <div class="project-card" data-tab="tech">
+            <h3>NMR Diffusion Analysis</h3>
+            <div class="card-tags">
+                <span class="card-tag">MATLAB</span>
+                <span class="card-tag">Curve Fitting</span>
+                <span class="card-tag">Bi-exponential Decay</span>
+                <span class="card-tag">ADC Modeling</span>
+                <span class="card-tag">Signal Processing</span>
+                <span class="card-tag">Scientific Computing</span>
+            </div>
+            <p>MATLAB-based analysis pipeline for NMR diffusion-weighted imaging data. Implements mono- and bi-exponential ADC curve fitting with iterating initial guess optimization. Handles normalization, signal decay modeling, and quantitative diffusion coefficient extraction from raw NMR data.</p>
+            <div class="card-links">
+                <a href="https://github.com/ogaga-ai/NMR-Diffusion-Analysis" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
+        <div class="project-card" data-tab="tech">
+            <h3>Computation Fundamentals</h3>
+            <div class="card-tags">
+                <span class="card-tag">MATLAB</span>
+                <span class="card-tag">Numerical Methods</span>
+                <span class="card-tag">Newton-Raphson</span>
+                <span class="card-tag">Euler's Method</span>
+                <span class="card-tag">Numerical Integration</span>
+                <span class="card-tag">Hessian Matrix</span>
+                <span class="card-tag">Nonlinear Equations</span>
+            </div>
+            <p>MATLAB implementations of core numerical methods used in computational science and engineering: Euler's method for ODEs, Newton-Raphson for nonlinear systems, numerical integration (trapezoidal, Simpson's), and Hessian matrix computation for optimization. Foundation for physics-based simulation and process modeling work.</p>
+            <div class="card-links">
+                <a href="https://github.com/ogaga-ai/Computation-Fundamentals" target="_blank" class="card-link">GitHub &rarr;</a>
+            </div>
+        </div>
+
+        <!-- Empty state -->
+        <div class="empty-state" id="empty-state">
+            More projects coming soon.
+        </div>
+
+    </div>
+
+    <script>
+        function switchTab(tab, btn) {
+            // Update active button
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Show/hide cards
+            const cards = document.querySelectorAll('.project-card');
+            let visible = 0;
+            cards.forEach(card => {
+                if (card.dataset.tab === tab) {
+                    card.classList.add('visible');
+                    visible++;
+                } else {
+                    card.classList.remove('visible');
+                }
+            });
+
+            // Empty state
+            const empty = document.getElementById('empty-state');
+            empty.classList.toggle('visible', visible === 0);
+
+            // Track tab switch in GA4
+            gtag('event', 'tab_switch', { tab_name: tab });
+        }
+    </script>
+
+</body>
+</html>
