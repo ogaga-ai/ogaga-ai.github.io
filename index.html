@@ -947,6 +947,26 @@
             </div>
 
 
+            <div class="project-card reveal">
+                <div class="card-content">
+                    <h3>Multi-Stage Neural Retrieval Pipeline</h3>
+                    <div class="card-tags">
+                        <span class="card-tag">Python</span>
+                        <span class="card-tag">BM25</span>
+                        <span class="card-tag">Bi-Encoder</span>
+                        <span class="card-tag">Cross-Encoder</span>
+                        <span class="card-tag">MS MARCO</span>
+                        <span class="card-tag">sentence-transformers</span>
+                        <span class="card-tag">FAISS</span>
+                        <span class="card-tag">Information Retrieval</span>
+                    </div>
+                    <p>Three-stage retrieval pipeline: BM25 → MS MARCO fine-tuned bi-encoder → cross-encoder re-ranking. Achieves MRR@10 = 0.825 on SQuAD v1.1 — a +32.8% relative improvement over BM25. Each stage trades latency for precision, from 5ms (BM25) to 50ms on GPU (cross-encoder).</p>
+                    <div class="card-links">
+                        <a href="https://github.com/ogaga-ai/neural-retrieval" target="_blank" class="card-link">GitHub &rarr;</a>
+                    </div>
+                </div>
+            </div>
+
             <div id="personal-extra"></div>
 
             <div style="text-align:center; margin: 8px 0 36px;">
@@ -1175,7 +1195,12 @@
                 'biomass-conversion-optimization',
                 'enzyme-thermostability',
                 'sentiment-analysis-project',
-                'Computation-Fundamentals'
+                'Computation-Fundamentals',
+                'neural-retrieval',
+                'NMR-Diffusion-Analysis',
+                'fraud-detection',
+                'battery-soh',
+                'job-matching'
             ]);
 
             // Any repo in this set goes under Hackathon Projects; everything else → Personal Projects
