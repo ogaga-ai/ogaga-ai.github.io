@@ -16,6 +16,15 @@
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%234361ee'/><text x='50' y='68' font-family='Arial,sans-serif' font-size='48' font-weight='bold' fill='white' text-anchor='middle'>AI</text></svg>">
 
+    <!-- Google Analytics 4 — replace G-XXXXXXXXXX with your Measurement ID from analytics.google.com -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -896,10 +905,15 @@
                     <h3>Enzyme Thermostability Prediction with ESM-2</h3>
                     <div class="card-tags">
                         <span class="card-tag">PyTorch</span>
+                        <span class="card-tag">HuggingFace Transformers</span>
                         <span class="card-tag">ESM-2 (150M)</span>
-                        <span class="card-tag">Transformers</span>
-                        <span class="card-tag">Protein ML</span>
+                        <span class="card-tag">scikit-learn</span>
+                        <span class="card-tag">Ridge Regression</span>
+                        <span class="card-tag">Gradient Boosting</span>
                         <span class="card-tag">UMAP</span>
+                        <span class="card-tag">NumPy</span>
+                        <span class="card-tag">pandas</span>
+                        <span class="card-tag">matplotlib</span>
                     </div>
                     <p>The ML model predicts enzyme melting temperature (Tm) from amino acid sequence using Meta's ESM-2 protein language model trained on 250M sequences across all of evolution. ESM-2 mean-pooled embeddings augmented with physicochemical features achieve Spearman&nbsp;ρ&nbsp;=&nbsp;0.673, a 20% improvement over the hand-crafted baseline. Directly motivated by industrial enzyme engineering for fermentation and bioconversion systems.</p>
                     <div class="card-links">
@@ -913,10 +927,17 @@
                     <h3>Biomass Conversion Optimization DOE and ML Research Framework</h3>
                     <div class="card-tags">
                         <span class="card-tag">Python</span>
-                        <span class="card-tag">ANN / ANFIS</span>
-                        <span class="card-tag">DOE</span>
-                        <span class="card-tag">Chemical Engineering</span>
-                        <span class="card-tag">NIW Petition</span>
+                        <span class="card-tag">scikit-learn</span>
+                        <span class="card-tag">ANN</span>
+                        <span class="card-tag">Random Forest</span>
+                        <span class="card-tag">Gradient Boosting</span>
+                        <span class="card-tag">SVR</span>
+                        <span class="card-tag">Bayesian Optimization</span>
+                        <span class="card-tag">Sobol Sensitivity Analysis</span>
+                        <span class="card-tag">Box-Behnken DOE</span>
+                        <span class="card-tag">NumPy</span>
+                        <span class="card-tag">pandas</span>
+                        <span class="card-tag">matplotlib</span>
                     </div>
                     <p>Open-source framework for optimizing the conversion of U.S. agricultural waste streams into high-value biochemicals. Validated on citric acid production from yam peel waste (R²&nbsp;=&nbsp;0.99883, 43.08&nbsp;g/L). Scale-up design: 95.4% recovery across 50 hollow-fiber membrane modules. Results openly published and accessible to U.S. research institutions and industry.</p>
                     <div class="card-links">
@@ -935,10 +956,14 @@
                 <div class="card-content">
                     <h3>mAb StabilityAI</h3>
                     <div class="card-tags">
-                        <span class="card-tag">Gemini API</span>
+                        <span class="card-tag">Python</span>
                         <span class="card-tag">Streamlit</span>
-                        <span class="card-tag">Biopharma</span>
+                        <span class="card-tag">Google Gemini API</span>
+                        <span class="card-tag">SciPy</span>
+                        <span class="card-tag">NumPy</span>
+                        <span class="card-tag">Kinetic Modeling</span>
                         <span class="card-tag">Prompt Engineering</span>
+                        <span class="card-tag">Biopharma</span>
                     </div>
                     <p>AI-powered tool that predicts monoclonal antibody stability under interfacial stress. Analyses formulation parameters, explains degradation mechanisms, and compares formulation strategies.</p>
                     <div class="card-links">
@@ -1062,6 +1087,27 @@
                     <a href="mailto:ogagaokedi@gmail.com" class="contact-btn primary">Email Me</a>
                     <a href="https://www.linkedin.com/in/ogagaokedi-chemicalengineer" target="_blank" class="contact-btn secondary">LinkedIn</a>
                 </div>
+            </div>
+
+            <!-- ── Stay in Touch ── -->
+            <div class="contact-strip reveal" style="margin-top: 16px;">
+                <h3>Stay in the Loop</h3>
+                <p>Drop your email to hear about new projects, papers, and tools I build at the intersection of AI and biology.</p>
+                <form action="https://formspree.io/f/REPLACE_WITH_YOUR_FORMSPREE_ID" method="POST"
+                      style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:8px;"
+                      onsubmit="gtag('event','email_signup',{event_category:'engagement'});">
+                    <input type="email" name="email" placeholder="your@email.com" required
+                           style="padding:10px 16px; border:1.5px solid var(--border); border-radius:8px;
+                                  font-size:0.9rem; font-family:inherit; outline:none; width:260px;
+                                  background:var(--bg-card); color:var(--text-primary);">
+                    <input type="hidden" name="source" value="portfolio-website">
+                    <button type="submit"
+                            style="padding:10px 20px; background:var(--accent); color:#fff;
+                                   border:none; border-radius:8px; font-size:0.9rem; font-weight:600;
+                                   cursor:pointer; font-family:inherit;">
+                        Notify Me
+                    </button>
+                </form>
             </div>
 
             <!-- ── Footer ── -->
