@@ -314,7 +314,8 @@
                 <span class="card-tag">FAISS</span>
                 <span class="card-tag">Information Retrieval</span>
             </div>
-            <p>Search is a harder problem than it looks. Keyword matching finds what you typed. It doesn't find what you meant. This three-stage pipeline closes that gap: BM25 for speed, a bi-encoder for semantic understanding, a cross-encoder for precision. MRR@10 = 0.825. A 32.8% improvement over keyword search alone.</p>
+            <p>Search engines are built to match words. When you type a query, they look for documents that contain those exact words. They do not look for documents that answer your question.</p>
+            <p>In this project, I built a three-stage retrieval pipeline that closes that gap. It starts with keyword search for speed, moves to a neural bi-encoder for semantic understanding, and ends with a cross-encoder that reads the query and each document together to rank by true relevance.</p>
             <div class="card-links">
                 <a href="https://github.com/ogaga-ai/neural-retrieval" target="_blank" class="card-link">GitHub &rarr;</a>
             </div>
